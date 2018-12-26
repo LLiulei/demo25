@@ -15,6 +15,8 @@ export default {
 
 <style>
 .header{
+    position: sticky;
+    top: 0;
     width: 100%;
     height: 45px;
     line-height: 45px;

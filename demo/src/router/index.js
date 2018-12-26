@@ -4,6 +4,8 @@ import Indexs from '@/containers'
 import Phone from '@/containers/phone'
 import Home from '@/containers/home'
 import Find from '@/containers/find'
+import TabOne from '@/containers/tabOne'
+import TabTwo from '@/containers/tabTwo'
 import Video from '@/containers/video'
 import My from '@/containers/my'
 import Friend from '@/containers/friend'
@@ -27,7 +29,19 @@ export default new Router({
       },{
         path: '/find',
         name: 'Find',
-        component: Find
+        component: Find,
+        children:[{
+          path: '',
+          redirect: '/find/tabOne'
+        },{
+          path: '/find/tabOne',
+          name: 'TabOne',
+          component: TabOne
+        },{
+          path: '/find/tabTwo',
+          name: 'TabTwo',
+          component: TabTwo
+        }]
       },{
         path: '/video',
         name: 'Video',
