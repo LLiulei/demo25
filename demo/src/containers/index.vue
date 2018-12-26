@@ -1,7 +1,7 @@
 <template>
     <div class="box">
         <div class="btn">
-            <router-link to="/phone">手机号登录</router-link>
+            <router-link to="/index/phone">手机号登录</router-link>
         </div>
         <div class="btn">注册</div>
         <div class="icons">

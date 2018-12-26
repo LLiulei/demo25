@@ -4,10 +4,10 @@
             <div class="back" @click="back">&lt;</div>
             <p>手机号的登录</p>
         </div>
-        <input type="text" placeholder="手机号"/>
-        <input type="password" placeholder="密码"/>
-        <button>登录</button>
-        <div class="reset">重设密码</div>
+        <input type="text" placeholder="手机号" value=""/>
+        <input type="password" placeholder="密码"   value="" />
+        <button @click="btn">登录</button>
+        <div class="reset" @click="reset">重设密码</div>
     </div>
 </template>
 
@@ -21,10 +21,28 @@ export default {
     },
     created() {
         this.back
+        this.btn
+        this.reset
     },
     methods: {
         back() {
             this.$router.go(-1);
+        },
+        btn() {
+            let phone = document.getElementsByTagName("input")[0].value;
+            let mima = document.getElementsByTagName("input")[1].value;
+            let phoneMsg = /^[1][3,4,5,7,8][0-9]{9}$/;
+            let mimaMsg = /^[a-zA-Z0-9]{4,10}$/;
+            if(phoneMsg.test(phone) === false){
+                return false;
+            } else {
+                console.log("成功")
+            }
+            console.log(document.getElementsByTagName("input")[0].value)
+            console.log(document.getElementsByTagName("input")[1].value)
+        },
+        reset() {
+            console.log(this)
         }
     }
 }
