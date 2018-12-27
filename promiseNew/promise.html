@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>newPromise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        img{
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        var obj = {
+            name: "1606A",
+            num: 20
+        }
+        console.log(`obj...`, obj)
+
+        var arr = [1,2,3,4,5];
+        console.log('concat...',arr === arr.concat([]))
+        console.log('slice...',arr === arr.slice())
+        console.log('assign...',obj === Object.assign({},obj))
+        
+        var obj2 = [{
+            a: [1,2,3,4,5,6],
+            b: {
+                c: {d:1}
+            }
+        }]
+
+        var obj3 = [...obj2];
+        console.log('obj3 assign...',obj2 === obj3,obj2.a === obj3.a, obj2.c === obj3.c)
+
+        var obj4 = JSON.parse(JSON.stringify(obj2))
+        console.log('obj4 assign...',obj2 === obj4,obj2.a === obj4.a,obj2.b === obj4.b)
+
+        var loadImg = (src) => {
+            return new Promise((resolve,reject) => {
+                let img = new Image();
+                img.onload = () => {
+                    resolve(img);
+                }
+                img.enerror = () => {
+                    reject();
+                }
+                img.src = src;
+            })
+        }
+
+        function func() {
+            setTimeout(() => {
+                return 10000;
+            }, 0)
+        }
+        func();
+
+        async function funcAsync() {
+            let result;
+            try {
+                result = await Promise.reject(100);
+            } catch (err) {
+
+            }
+            return result;
+        }
+        funcAsync().then(res => {
+            console.log("async res...",res)
+        })
+
+        let imgData = [{
+            "img": "./image/img1.jpg"
+        },{
+            "img": "./image/img2.jpg"
+        },{
+            "img": "./image/img3.jpg"
+        },{
+            "img": "./image/img4.jpg"
+        },{
+            "img": "./image/img5.jpg"
+        },{
+            "img": "./image/img6.jpg"
+        }]
+        // 图片加载完之后立即添加到dom中
+        // 1.用promise.all实现
+            let promise = imgData.map(item => loadImg(item.assimg));
+            Promise.all(promise).then(res => {
+                res.forEach(item => document.body.appendChild(item))
+            })
+        // 谁先加载完谁添加到dom中
+    </script>
+</body>
+</html>
