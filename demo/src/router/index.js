@@ -10,6 +10,7 @@ import Video from '@/containers/video'
 import My from '@/containers/my'
 import Friend from '@/containers/friend'
 import Account from '@/containers/account'
+import HuiYuan from '@/containers/account/huiyuan'
 
 Vue.use(Router)
 
@@ -59,6 +60,10 @@ export default new Router({
         name: 'Account',
         component: Account
       }]
+    },{
+      path: '/huiyuan',
+      name: 'HuiYuan',
+      component: HuiYuan
     },
     {
       path: '/index',

@@ -79,6 +79,10 @@ export default {
                 id: 6,
                 url: "http://img1.xiazaizhijia.com/walls/20151117/1440x900_905103645742a79.jpg",
                 name: "要做什么梦是每个人的自由"
+            },{
+                id: 7,
+                url: "http://pic38.nipic.com/20140212/17942401_101320663138_2.jpg",
+                name: "要做什么梦是每个人的自由"
             }]
         }
     },

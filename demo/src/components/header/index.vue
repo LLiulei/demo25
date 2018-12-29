@@ -15,6 +15,7 @@ export default {
 
 <style>
 .header{
+    z-index: 999;
     position: sticky;
     top: 0;
     width: 100%;
