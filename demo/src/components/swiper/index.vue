@@ -6,6 +6,7 @@
 
 <script>
 export default {
+    props: ['swiperList'],
     data () {
     return {
       
@@ -15,7 +16,7 @@ export default {
    
   },
   created () {
-    
+    console.log(this.swiperList)
   }
 }
 </script>

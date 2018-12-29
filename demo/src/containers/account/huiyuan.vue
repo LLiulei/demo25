@@ -7,13 +7,40 @@
                 <img src="../../image/wode.png"/>
             </span>
         </div>
-        <!-- <Swiper/> -->
+        <Swiper :swiperList="swiperList"/>
         this is huiyuan
     </div>
 </template>
 <script>
+import Swiper from "../../components/swiper";
 export default {
-    name: "会员"
+    name: "vip",
+    components: {
+        Swiper
+    },
+    data() {
+        return {
+            swiperList:[{
+                id: 1,
+                url: "../../image/img1.jpg"
+            },{
+                id: 2,
+                url: "../../image/img2.jpg"
+            },{
+                id: 3,
+                url: "../../image/img3.jpg"
+            },{
+                id: 4,
+                url: "../../image/img4.jpg"
+            },{
+                id: 5,
+                url: "../../image/img5.jpg"
+            },{
+                id: 6,
+                url: "../../image/img6.jpg"
+            }]
+        }
+    }
 }
 </script>
 <style>
