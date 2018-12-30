@@ -131,6 +131,9 @@
                 <p class="right">&gt;</p>
             </dl>
         </div>
+        <div class="tui">
+            退出登录
+        </div>
         <div class="zero"></div>
     </div>
 </template>
@@ -149,10 +152,6 @@ export default {
 </script>
 
 <style>
-    .zero{
-        width: 100%;
-        height: 45px;
-    }
     .account{
         width: 100%;
         height: 100%;
@@ -276,6 +275,7 @@ export default {
         line-height: 35px;
         text-align: center;
         color: #ccc;
+        font-family: "楷体";
     }
     .account-cen .cenDls:last-child dd{
         border-bottom: 0!important;
@@ -285,5 +285,14 @@ export default {
     }
     .account-cen3 .cenDls:last-child dd{
         border-bottom: 0!important;
+    }
+    .account .tui{
+        width: 100%;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: #fff;
     }
 </style>

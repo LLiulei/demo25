@@ -24,4 +24,8 @@ export default {
       margin: 0;
       padding: 0;
     }
+    .zero{
+        width: 100%;
+        height: 45px;
+    }
 </style>
