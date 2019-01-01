@@ -2,6 +2,7 @@
     <div>
         <Header/>
         <nav class="tab">
+            <!-- 跳转页面实现tab切换 -->
             <router-link to="/find/tabOne">
                 <p>个性推荐</p>
             </router-link>

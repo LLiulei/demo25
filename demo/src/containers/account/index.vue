@@ -1,11 +1,14 @@
 <template>
     <div class="account">
+        <!-- 账号页面 -->
         <header>账号</header>
+        <!-- 登录状态的地方 -->
         <div class="account-tab">
             <span>登录网易云音乐</span>
             <span>手机电脑多端同步，尽享海量高品质音乐</span>
             <div>立即登录</div>
         </div>
+        <!-- 内容状态 -->
         <div class="account-x">
             <div class="imgs">
                 <img src="../../image/xinfeng.png"/>
@@ -131,6 +134,7 @@
                 <p class="right">&gt;</p>
             </dl>
         </div>
+        <!-- 显示退出登录状态 -->
         <div class="tui">
             退出登录
         </div>
@@ -144,6 +148,7 @@ export default {
         this.getHui
     },
     methods: {
+        // 跳转至会员界面
         getHui() {      
             this.$router.push("/huiyuan")
         }

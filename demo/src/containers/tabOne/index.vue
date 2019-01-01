@@ -1,10 +1,12 @@
 <template>
     <div class="tabList">
+        <!-- 发现的轮播图 -->
         <el-carousel indicator-position="outside" height="180px">
             <el-carousel-item v-for="(item,index) in oneList" :key="index">
                 <img :src="item"/>
             </el-carousel-item>
         </el-carousel>
+        <!-- 发现的app -->
         <div class="tabBtn">
             <dl>
                 <dt>
@@ -31,6 +33,7 @@
                 <dd>排行榜</dd>
             </dl>
         </div>
+        <!-- 发现的推荐歌单部分 -->
         <h4>推荐歌单 > </h4>
         <div class="ge">
             <dl v-for="(lis,index) in oneGe" :key="index">
