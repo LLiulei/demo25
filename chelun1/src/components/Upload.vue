@@ -68,6 +68,9 @@ ul{
   display: flex;
   align-items: center;
   justify-content: space-around;
+  padding-top: 10px;
+  border-bottom: 0.01rem solid #ccc;
+  background-color: #fff;
 }
 li{
   display: flex;
