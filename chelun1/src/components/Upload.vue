@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     ...mapState({
-      list: state=>state.upload.list
+      list: state => state.upload.list
     }),
     addImg(){
       return add;
