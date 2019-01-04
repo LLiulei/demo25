@@ -27,7 +27,7 @@ const actions = {
       })
     })
     commit('updateState', {cityList: res.data})
-    console.log('res...', res);
+    // console.log('res...', res);
   },
   // 获取可补换的城市列表
   async getCostList({commit,state}, action){

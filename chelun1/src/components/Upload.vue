@@ -51,7 +51,7 @@ export default {
     async upload(type){
       // let res = await uploadImg(type);
       let index = this.list.findIndex(item=>item==this.current);
-      console.log('index...', index);
+      // console.log('index...', index);
       this.updateList({
         index,
         // src: 'http://picture.eclicks.cn/g2//l//2019//01//02//454a564ad63ddda5_640_853.jpg',
