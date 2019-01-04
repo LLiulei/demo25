@@ -13,13 +13,15 @@
         <van-picker :columns="typeArray" show-toolbar title="服务类型" @cancel="cancelType" @confirm="confirmType"/>
       </van-popup>
     </section>
+    <button @click="click">立即支付</button>
   </div>
 </template>
 
 <script>
 import Upload from '@/components/Upload';
 import Head from '@/components/head';
-import CityPicker from '@/components/CityPicker'
+import CityPicker from '@/components/CityPicker';
+import {isVip, goPay} from '@/api/index';
 export default {
   data() {
     return {
@@ -48,7 +50,10 @@ export default {
     }
   },
   mounted(){
-    fetch('/api/ExchangeJiaZhao/getCostList?order_type=1&city_id=110100000000&province_id=110')
+    isVip().then(res=>{
+      console.log('isVip...', res);
+    })
+    // fetch('/api/ExchangeJiaZhao/getCostList?order_type=1&city_id=110100000000&province_id=110')
   }
 }
 </script>
