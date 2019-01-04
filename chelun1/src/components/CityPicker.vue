@@ -95,5 +95,25 @@ export default {
     width: 100%;
     height: 100%;
     background-color: #fff;
+    margin-top: 10px;
+  }
+  ul li{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    display: flex;
+    border-bottom: 0.01rem solid #ccc;
+  }
+  ul li>span:nth-child(1){
+    flex: 3;
+    font-size: 14px;
+    padding-left: 10px;
+    font-weight: bold;
+    box-sizing: border-box;
+  }
+  ul li>span:nth-child(2){
+    flex: 1;
+    font-size: 12px;
+    margin-right: 5px;
   }
 </style>
