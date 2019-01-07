@@ -16,7 +16,7 @@
       </div>
     </div>
     <div id="head">
-        <img src="http://pic.sc.chinaz.com/files/pic/pic9/201811/bpic9257.jpg" id="tabImg">
+        <img src="http://picture.eclicks.cn/g1/l/2018/04/17/2e324eb8e740788b_2633_960.png" id="tabImg">
     </div>
     <div id="content">
         <ul class="tablist">

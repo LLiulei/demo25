@@ -2,11 +2,11 @@
 @media screen and (max-width: 1000px) {
     #header {
         width: 100%;
-        height: 0.9rem;
+        height: 0.8rem;
         #tab {
             width: 100%;
-            height: 0.9rem;
-            line-height: 0.9rem;
+            height: 0.8rem;
+            line-height: 0.8rem;
             border-bottom: solid 1px rgba(50,50,50,.2);
             display: flex;
             h5 {
@@ -35,7 +35,7 @@
     }
     #head { 
         width: 100%;
-        height: 900px;
+        height: 700px;
         #tabImg {
         width: 100%;
         height: 100%;
@@ -66,6 +66,48 @@
         }
         .show {
             display: block;
+        }
+        .trend {
+            width: 100%;
+            height: 100%;
+            h5 {
+                width: 90%;
+                height: 30px;
+                line-height: 30px;
+                border-left: 2px solid skyblue;
+                padding-left: 15px;
+                color: #ccc;
+                margin: 1%;
+                font-size: 30px;
+            }
+            .trendCon {
+                .trendLeft {
+                    width: 100%;
+                }
+                .trendRight {
+                    width: 100%;
+                    h6{
+                        width: 100%;
+                        height: 60px;
+                        font-size: 30px;
+                        line-height: 60px;
+                        text-align: center;
+                    }
+                    ul{
+                        width: 100%;
+                        margin: 10px;
+                        box-sizing: border-box;
+                        font-size: 28px;
+                        li{
+                            width: 100%;
+                            height: 55px;
+                            line-height: 55px;
+                            padding-left: 20px;
+                            box-sizing: border-box;
+                        }
+                    }
+                }
+            }
         }
     }
     #footer {  }
