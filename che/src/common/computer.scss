@@ -1,0 +1,99 @@
+// 电脑版
+@media screen and (min-width: 1000px) {
+    #header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        z-index: 100;
+        height: 1rem;
+        line-height: 1rem;
+        border-bottom: solid 1px #d6d6d6;
+        -webkit-transition: padding .3s,background-color .3s,box-shadow .3s,border-bottom .3s;
+        -moz-transition: padding .3s,background-color .3s,box-shadow .3s,border-bottom .3s;
+        transition: padding .3s,background-color .3s,box-shadow .3s,border-bottom .3s;
+        #tab {
+            width: 100%;
+            border-bottom: solid 1px rgba(50,50,50,.2);
+            display: flex;
+            h5{
+                flex: 1;
+                font-size: 0.5rem;
+                text-align: center;
+            }
+            ul{
+                flex: 4;
+                font-size: 0.2rem;
+                padding-left: 1rem;
+                box-sizing: border-box;
+            li{
+                padding: 0 0.08rem;
+                float: left;
+            }
+        }
+        #login{
+          flex: 1;
+          font-size: 0.1rem;
+          text-align: center;
+        }
+        #more{
+          display: none;
+        }
+      }
+    }
+    .actH {
+        width: 100%;
+        height: 0.8rem!important;
+        line-height: 0.8rem!important;
+        z-index: 122;
+        background-color: #fff!important;
+        border-bottom: solid 1px #d6d6d6;    
+        box-shadow: 0 2px 6px rgba(0,0,0,.1);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+    #head { 
+        position: relative;
+        margin: 0 auto;
+        height: 700px;
+        width: 100%;
+        max-width: 1920px;
+        #tabImg {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            z-index: 10;
+            margin-left: -960px;
+            width: 1920px;
+            height: 100%;
+        }
+    }
+    #content {  
+        width: 100%;
+        height: 100%;
+        .tablist {
+            width: 100%;
+            height: 1rem;
+            line-height: 1rem;
+            font-size: 0.2rem;
+            border-bottom: 0.01rem solid #ccc;
+            color: #ccc;
+            display: flex;
+            li{
+            width: 20%;
+            text-align: center;
+            }
+            .active{
+                color: #000!important;
+                border-bottom: 0.03rem solid blue!important;
+            }
+        }
+        .hide {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+    }
+    #footer {  }
+}
