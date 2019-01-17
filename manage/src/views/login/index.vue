@@ -89,16 +89,16 @@ export default {
       }
     }
     const username = (rule, value, callback) => {
-      if (value.length < 5){
-        callback(new Error('用户名长度必须大于5'))
+      if (value.length < 2){
+        callback(new Error('用户名长度必须大于2'))
       }else{
         callback()
       }
     }
     return {
       loginForm: {
-        username: 'admin',
-        password: '1111111'
+        username: 'liminghui',
+        password: '123456'
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur' }, {trigger: 'blur', validator: username}],

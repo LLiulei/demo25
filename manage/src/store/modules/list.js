@@ -1,4 +1,4 @@
-import { getUserList, updateUserInfo } from '@/api/user'
+import {getUserList, updateUserInfo, deleteUser, modifyRoler} from '@/api/user'
 
 const state = {
   list: []
@@ -27,16 +27,16 @@ const actions = {
       })
     })
   },
-  // 获取用户列表
-  updateUserInfo({commit}, data) {
-    return new Promise((resolve, reject) => {
-      updateUserInfo(data).then(res => {
-        if(res.data.code == 1) {
+  // 更新用户信息
+  updateUserInfo({commit}, data){
+    return new Promise((resolve, reject)=>{
+      updateUserInfo(data).then(res=>{
+        if (res.data.code == 1){
           resolve(res.data.msg);
-        }else {
+        }else{
           reject(res.data.msg);
         }
-      }).catch(err => {
+      }).catch(err=>{
         reject(err);
       })
     })
@@ -45,6 +45,20 @@ const actions = {
   deleteUser({commit}, data){
     return new Promise((resolve, reject)=>{
       deleteUser(data).then(res=>{
+        if (res.data.code == 1){
+          resolve(res.data.msg);
+        }else{
+          reject(res.data.msg);
+        }
+      }).catch(err=>{
+        reject(err);
+      })
+    })
+  },
+  // 为用户分配角色
+  modifyRoler(context, data){
+    return new Promise((resolve, reject)=>{
+      modifyRoler(data).then(res=>{
         if (res.data.code == 1){
           resolve(res.data.msg);
         }else{

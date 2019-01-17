@@ -13,6 +13,8 @@ import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
 // 引入用户路由
 import userRouter from './modules/user'
+// 引入组织架构路由
+import organizeRouter from './modules/organize'
 
 /** note: Submenu only appear when children.length>=1
  *  detail see  https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -151,7 +153,7 @@ export const asyncRouterMap = [
       }
     ]
   },
-
+  organizeRouter,
   {
     path: '/icon',
     component: Layout,

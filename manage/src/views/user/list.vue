@@ -8,6 +8,11 @@
              <img :src="scope.row.avatar" alt="" style="width: 100%">
         </template>
       </el-table-column>
+      <el-table-column label="创建时间" width="80">
+        <template slot-scope="scope">
+          <span>{{scope.row.create_time | toThousandFilter}}</span>
+        </template>
+      </el-table-column>
       <el-table-column prop="username" label="姓名" width="100">
       </el-table-column>
       <el-table-column prop="profile" label="简介" width="150">
@@ -118,31 +123,31 @@
   } from 'vuex';
   export default {
     data() {
-      const profileValidator = (rule, value, callback) => {
-        if(!value || value.length < 20) {
+      const profileValidator = (rule, value, callback)=>{
+        if (!value || value.length < 20){
           callback(new Error('个人简介不能低于20个字'))
-        }else {
+        }else{
           callback();
         }
       }
-      const phoneValidator = (rult, value, callback) => {
-        if(!/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/.test(value)) {
+      const phoneValidator = (rule, value, callback)=>{
+        if (!/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/.test(value)){
           callback(new Error('请输入正确的手机号码'))
-        }else {
+        }else{
           callback();
         }
       }
-      const emailValidator = (rule, value, callback) => {
-        if(!/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9]+)*\.[a-zA-Z0-9]{2,6}$/.test(value)) {
-          callback(new Error('请输入 正确的邮箱地址'))
-        }else {
+      const emailValidator = (rule, value, callback)=>{
+        if (!/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/.test(value)){
+          callback(new Error('请输入正确的邮箱地址'))
+        }else{
           callback();
         }
       }
       return {
         current: 1,
         currentUser: {},
-        rolers: ['boss','developer','producter','operator','designer'],
+        rolers: ['boss', 'developer', 'producter', 'operator', 'designer'],
         myRolers: [],
         showDialog: false,
         editRules: {
@@ -151,7 +156,7 @@
           phone: [{trigger:'blur', required: true,  validator: phoneValidator}],
           email: [{trigger:'blur', required: true,  validator: emailValidator}],
         },
-        type: '' // 弹框类型，edit表示修改信息，roler表示修改角色
+        type: ''  //弹框类型，edit表示修改信息，roler表示修改角色
       }
     },
     computed: {
@@ -166,7 +171,8 @@
       ...mapActions({
         getUserList: 'list/getUserList',
         updateUserInfo: 'list/updateUserInfo',
-        deleteUser: 'list/deleteUser'
+        deleteUser: 'list/deleteUser',
+        modifyRoler: 'list/modifyRoler'
       }),
       handleEdit(index, row) {
         console.log('index...', index, row);
@@ -176,19 +182,19 @@
       },
       handleDelete(index, row) {
         let {id} = row;
-        this.deleteUser({uid: id}).then(res => {
+        this.deleteUser({uid: id}).then(res=>{
           this.$message({
             message: res,
             center: true,
             type: 'success'
-          })
-          this.getUserList({page: this.current})
-        }).catch(err => {
+          });
+          this.getUserList({page: this.current});
+        }).catch(err=>{
           this.$message({
             message: err,
             center: true,
             type: 'error'
-          })
+          });
         })
       },
       handleClose(){
@@ -199,49 +205,70 @@
         this.current = page;
         this.getUserList({page})
       },
-      handleRoler(index, row) {
+      handleRoler(index, row){
         this.type = 'roler';
         this.currentUser = {...row};
         this.myRolers = [...row.rolers];
         this.showDialog = true;
       },
-      deleteRoler(roler) {
-        let index = this.myRolers.findIndex(item=>item==roler);
+      deleteRoler(roler){
+        let index  = this.myRolers.findIndex(item=>item==roler);
         this.myRolers.splice(index, 1);
       },
-      addRoler(roler) {
+      addRoler(roler){
         this.myRolers.push(roler);
         this.myRolers = [...new Set(this.myRolers)];
       },
       submit(){
-        this.$refs.form.validate(valid=>{
-          if (valid){
-            console.log('currentUser...', this.currentUser);
-            let {id,username,profile,email,phone} = this.currentUser;
-            this.updateUserInfo({id, username, profile, email, phone}).then(res=>{
-              this.$message({
-                message: res,
-                center: true,
-                type: 'success'
-              });
-              this.getUserList({page: this.current});
-            }).catch(err=>{
-              this.$message({
-                message: err,
-                center: true,
-                type: 'error'
-              });
-            })
-            this.showDialog = false;
-          }
-        })
+        if (this.type == 'edit'){
+          this.$refs.form.validate(valid=>{
+            if (valid){
+              console.log('currentUser...', this.currentUser);
+              let {id,username,profile,email,phone} = this.currentUser;
+              this.updateUserInfo({id, username, profile, email, phone}).then(res=>{
+                this.$message({
+                  message: res,
+                  center: true,
+                  type: 'success'
+                });
+                this.getUserList({page: this.current});
+              }).catch(err=>{
+                this.$message({
+                  message: err,
+                  center: true,
+                  type: 'error'
+                });
+              })
+              this.showDialog = false;
+            }
+          })
+        }else if(this.type == 'roler'){
+          let {id} = this.currentUser;
+          let rolersId = this.myRolers.map(item=>{
+            return this.rolers.findIndex(value=>value==item)+1
+          })
+          this.modifyRoler({uid: id, rolersId}).then(res=>{
+            this.$message({
+              message: res,
+              center: true,
+              type: 'success'
+            });
+            this.getUserList({page: this.current});
+          }).catch(err=>{
+            this.$message({
+              message: err,
+              center: true,
+              type: 'error'
+            });
+          })
+          this.showDialog = false;
+        }
       }
     }
   }
 </script>
-
 <style lang="scss" scoped>
-  .avatar-uploader /deep/ .avatar {
-    width: 40px;
-  }
+.avatar-uploader /deep/ .avatar{
+  width: 40px;
+}
 </style>
